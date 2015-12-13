@@ -23,5 +23,6 @@
  "_sqlite3_clear_bindings",
  "_sqlite3_finalize",
  "_sqlite3_close_v2",
- "_sqlite3_complete"
+ "_sqlite3_complete",
+ "_sqlite3_stmt_readonly"
 ]

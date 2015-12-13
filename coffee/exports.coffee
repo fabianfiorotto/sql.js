@@ -45,6 +45,9 @@ sqlite3_finalize = Module['cwrap'] 'sqlite3_finalize', 'number', ['number']
 # int sqlite3_complete(const char *sql);
 sqlite3_complete = Module['cwrap'] 'sqlite3_complete', 'number', ['string']
 
+# int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
+sqlite3_stmt_readonly = Module['cwrap'] 'sqlite3_stmt_readonly', 'number' , ['number']
+
 # Export the API
 this['SQL'] = {
   'Database':Database,

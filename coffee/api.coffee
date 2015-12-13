@@ -154,6 +154,10 @@ class Statement
 		rowObject[name] = values[i] for name,i in names
 		return rowObject
 
+	# Check if the sentence is a SELECT
+	'isReadonly': ->
+		return sqlite3_stmt_readonly(@stmt) == 1
+
 	### Shorthand for bind + step + reset
 	Bind the values, execute the statement, ignoring the rows it returns, and resets it
 	@param [Array,Object] Value to bind to the statement
@@ -355,7 +359,7 @@ class Database
 
 	@param sql [String] A string of SQL text. Can contain placeholders that will be
 	bound to the parameters given as the second argument
-	@param params [Array<String,Number,null,Uint8Array>] (*optional*) Parameters to bind 
+	@param params [Array<String,Number,null,Uint8Array>] (*optional*) Parameters to bind
 	to the query
 	@param callback [Function(Object)] A function that will be called on each row of result
 	@param done [Function] A function that will be called when all rows have been retrieved
