@@ -2,6 +2,7 @@ sqlite3_open = Module['cwrap'] 'sqlite3_open', 'number', ['string', 'number']
 sqlite3_close_v2 = Module['cwrap'] 'sqlite3_close_v2', 'number', ['number']
 sqlite3_exec = Module['cwrap'] 'sqlite3_exec', 'number', ['number', 'string', 'number', 'number', 'number']
 sqlite3_free = Module['cwrap'] 'sqlite3_free', '', ['number']
+sqlite3_changes = Module['cwrap'] 'sqlite3_changes', 'number', ['number']
 
 # Prepared statements
 ## prepare
@@ -47,6 +48,19 @@ sqlite3_complete = Module['cwrap'] 'sqlite3_complete', 'number', ['string']
 
 # int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
 sqlite3_stmt_readonly = Module['cwrap'] 'sqlite3_stmt_readonly', 'number' , ['number']
+
+## Create custom functions
+sqlite3_create_function_v2 = Module['cwrap'] 'sqlite3_create_function_v2', 'number', ['number', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'number']
+sqlite3_value_type = Module['cwrap'] 'sqlite3_value_type', 'number', ['number']
+sqlite3_value_bytes = Module['cwrap'] 'sqlite3_value_bytes', 'number', ['number']
+sqlite3_value_text = Module['cwrap'] 'sqlite3_value_text', 'string', ['number']
+sqlite3_value_int = Module['cwrap'] 'sqlite3_value_int', 'number', ['number']
+sqlite3_value_blob = Module['cwrap'] 'sqlite3_value_blob', 'number', ['number']
+sqlite3_value_double = Module['cwrap'] 'sqlite3_value_double', 'number', ['number']
+sqlite3_result_double = Module['cwrap'] 'sqlite3_result_double', '', ['number', 'number']
+sqlite3_result_null = Module['cwrap'] 'sqlite3_result_null', '', ['number']
+sqlite3_result_text = Module['cwrap'] 'sqlite3_result_text', '', ['number', 'string', 'number', 'number']
+RegisterExtensionFunctions = Module['cwrap'] 'RegisterExtensionFunctions', 'number', ['number']
 
 # Export the API
 this['SQL'] = {
