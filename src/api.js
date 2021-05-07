@@ -224,6 +224,7 @@ Module["onRuntimeInitialized"] = function onRuntimeInitialized() {
         "",
         ["number", "string", "number"]
     );
+    var sqlite3_stmt_readonly = cwrap("sqlite3_stmt_readonly", "number", ["number"]);
     var registerExtensionFunctions = cwrap(
         "RegisterExtensionFunctions",
         "number",
@@ -1013,6 +1014,13 @@ Module["onRuntimeInitialized"] = function onRuntimeInitialized() {
         }
         this.statements[pStmt] = stmt;
         return stmt;
+    };
+
+    /** Get the list of column names of a row of result of a statement.
+    @return {boolean} True if the statement is read only.
+     */
+    Statement.prototype["isReadonly"] = function isReadonly() {
+        return sqlite3_stmt_readonly(this.stmt) === 1;
     };
 
     /** Iterate over multiple SQL statements in a SQL string.
